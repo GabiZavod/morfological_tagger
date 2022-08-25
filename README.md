@@ -10,9 +10,7 @@ Budem pracovať so zjednodušenými 10-pozičnými značkami, ktoré charakteriz
 3. Číslo
 4. Pád
 5. Stupeň
-6. Privlastňovací rod
-7. Privlastňovacie číslo
-8. Negácia
+6. Negácia
 
 tbh, nie som si úplne istá, čo robí 6. a 7., možno to tiež vynechám.
 
@@ -101,6 +99,15 @@ Budem ich určovať na základe vzoru, resp. zhody so vzorom
 - jednotné (U)
 - množné (D)
 
+### Pád
+
+- nominatív (N)
+- genitív (G)
+- datív (D)
+- akuzatív (A)
+- lokál (L)
+- inštromentál (I)
+
 ## Stupeň
 
 - prvý (1)
@@ -113,7 +120,10 @@ Určovaný len pri prídavných menách, tj. pri vzoroch pekný a cudzí
 
 ## Negácia
 
-- nenegované (+)
-- negované (-)
+- nenegované (F)
+- negované (T)
 
 Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-", aplikujem len pri prídavných menách
+
+
+| Slovný druh | Rod | Číslo | Pád | Stupeň
