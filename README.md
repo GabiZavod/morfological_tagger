@@ -1,16 +1,16 @@
-# morfological_tagger
 
 Zápočtový program na Neprocedurální programování v LS 2022 - Zjednodušený morfologický značkovač
 
 # Špecifikácia
 
 Budem pracovať so zjednodušenými 10-pozičnými značkami, ktoré charakterizujú len menné triedy:
-1. Slovný druh
-2. Rod
-3. Číslo
-4. Pád
-5. Stupeň
-6. Negácia
+1. Negácia
+2. Slovný druh
+3. Rod
+4. Číslo
+5. Pád
+6. Stupeň
+
 
 tbh, nie som si úplne istá, čo robí 6. a 7., možno to tiež vynechám.
 
@@ -26,17 +26,17 @@ Zámená-Z
 ### Podstatné mená (N)
 
 Vzory:
-- mužský rod (M)
+- mužský rod (m)
     - chlap
     - hrdina
     - dub
     - stroj
-- stredný rod (S)
+- stredný rod (s)
     - mesto
     - srdce
     - vysvedčenie
     - dievča
-- ženský rod (Z):
+- ženský rod (z):
     - žena
     - ulica
     - dlaň
@@ -91,22 +91,22 @@ Budem ich určovať na základe vzoru, resp. zhody so vzorom
 
 ### Rod
 
-- mužský (M)
-- ženský (Z)
-- stredný (S)
+- mužský (m)
+- ženský (z)
+- stredný (s)
 
 ### Číslo
-- jednotné (U)
-- množné (D)
+- jednotné (s)
+- množné (p)
 
 ### Pád
 
-- nominatív (N)
-- genitív (G)
-- datív (D)
-- akuzatív (A)
-- lokál (L)
-- inštromentál (I)
+- nominatív (n)
+- genitív (g)
+- datív (d)
+- akuzatív (a)
+- lokál (l)
+- inštromentál (i)
 
 ## Stupeň
 
@@ -120,10 +120,15 @@ Určovaný len pri prídavných menách, tj. pri vzoroch pekný a cudzí
 
 ## Negácia
 
-- nenegované (F)
-- negované (T)
+- nenegované (0)
+- negované (1)
 
 Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-", aplikujem len pri prídavných menách
 
 
-| Slovný druh | Rod | Číslo | Pád | Stupeň
+# Práca s nástrojom
+
+Nechcem používať slovník lemmat ani kmeňov, preto bude potrebné, aby sa pri zadaní requestu zadalo aj lemma resp. kmeň, inak nebudem vedieť určiť napríklad nominatív, rep. to, kde začína koncovka.
+- bude lepšie zadávať kmeň
+- možno nebude fungovať pre slová s rôznym kmeňom
+
