@@ -124,6 +124,104 @@ srcp([t,a,m,i], [n,s,p,i]). % dievčaTAMI
 srcp([x], [n,s,p,g]). % miest, sŕdc
 srcp([x], [n,z,p,g]). % žien, ulíc
 
+%%%% Pridavne mena %%%%
+% Koncovka = ý
+srcp([ý], [a,m,s,n]). % peknÝ
+srcp([ý], [a,m,s,a]). % peknÝ
+% Koncovka = á
+srcp([á], [a,z,s,n]). % peknÁ
+% Koncovka = ú
+srcp([ú], [a,z,s,a]). % peknÚ
+% Koncovka = é
+srcp([é], [a,s,s,n]). % peknÉ
+srcp([é], [a,s,s,a]). % peknÉ
+srcp([é], [a,s,p,n]). % peknÉ
+srcp([é], [a,m,p,n]). % peknÉ
+srcp([é], [a,s,p,a]). % peknÉ
+srcp([é], [a,m,p,a]). % peknÉ
+srcp([é], [a,z,p,n]). % peknÉ
+srcp([é], [a,z,p,a]). % peknÉ
+% Koncovka = í
+srcp([í], [a,m,s,n]). % cudzÍ
+srcp([í], [a,m,s,a]). % cudzÍ
+srcp([í], [a,m,p,n]). % peknÍ
+% Koncovka = ých
+srcp([ý,c,h], [a,m,p,g]). %peknÝCH
+srcp([ý,c,h], [a,z,p,g]). %peknÝCH
+srcp([ý,c,h], [a,s,p,g]). %peknÝCH
+srcp([ý,c,h], [a,m,p,a]). %peknÝCH
+srcp([ý,c,h], [a,m,p,l]). %peknÝCH
+srcp([ý,c,h], [a,z,p,l]). %peknÝCH
+srcp([ý,c,h], [a,s,p,l]). %peknÝCH
+% Koncovka = ého
+srcp([é,h,o], [a,m,s,g]). % peknÉHO
+srcp([é,h,o], [a,s,s,g]). % peknÉHO
+srcp([é,h,o], [a,m,s,a]). % peknÉHO
+% Koncovka = ému
+srcp([é,m,u], [a,m,s,d]). % peknÉMU
+srcp([é,m,u], [a,s,s,d]). % peknÉMU
+% Koncovka = om
+srcp([o,m], [a,m,s,l]). % peknOM
+srcp([o,m], [a,s,s,l]). % peknOM
+% Koncovka = ým
+srcp([ý,m], [a,m,s,i]).
+srcp([ý,m], [a,s,s,i]).
+srcp([ý,m], [a,m,p,d]).
+srcp([ý,m], [a,z,p,d]).
+srcp([ý,m], [a,s,p,d]).
+% Koncovka = ými
+srcp([ý,m,i], [a,m,p,i]). % peknÝMI
+srcp([ý,m,i], [a,z,p,i]). % peknÝMI
+srcp([ý,m,i], [a,s,p,i]). % peknÝMI
+% Koncovka = ej
+srcp([e,j], [a,z,s,g]). % peknEJ, cudzEJ
+srcp([e,j], [a,z,s,d]). % peknEJ, cudzEJ
+srcp([e,j], [a,z,s,l]). % peknEJ, cudzEJ
+% Koncovka = ou
+srcp([o,u], [a,z,s,i]). %peknOU, cudzOU
+% Koncovka = ia
+srcp([i,a], [a,z,s,n]). % cudzIA
+% Koncovka = iu
+srcp([i,u], [a,z,s,a]). % cudzIU
+% Koncovka = ie
+srcp([i,e], [a,s,s,n]). % cudzIE
+srcp([i,e], [a,s,s,a]). % cudzIE
+srcp([i,e], [a,z,p,n]). % cudzIE
+srcp([i,e], [a,s,p,n]). % cudzIE
+srcp([i,e], [a,z,p,a]). % cudzIE
+srcp([i,e], [a,s,p,a]). % cudzIE
+% Koncovka = ieho
+srcp([i,e,h,o], [a,m,s,g]). % cudzIEHO
+srcp([i,e,h,o], [a,s,s,g]). % cudzIEHO
+% Koncovka = iemu
+srcp([i,e,m,u], [a,m,s,d]). %cudzIEMU
+srcp([i,e,m,u], [a,s,s,d]). %cudzIEMU
+% Koncovka = om
+srcp([o,m], [a,m,s,l]). % cudzOM
+srcp([o,m], [a,s,s,l]). % cudzOM
+% Koncovka = ím
+srcp([í,m], [a,m,s,i]). % cudzÍM
+srcp([í,m], [a,s,s,i]). % cudzÍM
+srcp([í,m], [a,m,p,d]). % cudzÍM
+srcp([í,m], [a,z,p,d]). % cudzÍM
+srcp([í,m], [a,s,p,d]). % cudzÍM
+% Koncovka = ích
+srcp([í,c,h], [a,m,p,g]). % cudzÍCH
+srcp([í,c,h], [a,z,p,g]). % cudzÍCH
+srcp([í,c,h], [a,s,p,g]). % cudzÍCH
+srcp([í,c,h], [a,m,p,a]). % cudzÍCH
+srcp([í,c,h], [a,m,p,l]). % cudzÍCH
+srcp([í,c,h], [a,z,p,l]). % cudzÍCH
+srcp([í,c,h], [a,s,p,l]). % cudzÍCH
+% Koncovka = ími
+srcp([í,m,i], [a,m,p,i]). % cudzÍMI
+srcp([í,m,i], [a,z,p,i]). % cudzÍMI
+srcp([í,m,i], [a,s,p,i]). % cudzÍMI
+
+
+
+
+
 
 
 % koncovka(+Kmen, +Slovo, -Koncovka) :- ak odoberiem zo začiatku Slova Kmen, dostanem Koncovku.

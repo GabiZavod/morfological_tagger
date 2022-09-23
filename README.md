@@ -11,17 +11,14 @@ Budem pracovať so zjednodušenými 10-pozičnými značkami, ktoré charakteriz
 5. Pád
 6. Stupeň
 
-
-tbh, nie som si úplne istá, čo robí 6. a 7., možno to tiež vynechám.
-
 ## Slovný druh
 
 Program bude rozlišovať nasledujúce dvojice slovný druh-značka:
 
-Podstatné meno-N
-Prídavné meno-P
-Zámená-Z
-Číslovky-C
+Podstatné meno (n)
+Prídavné meno (aS)
+Zámená (z)
+Číslovky (c)
 
 ### Podstatné mená (N)
 
