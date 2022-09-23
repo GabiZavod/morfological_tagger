@@ -1,4 +1,5 @@
 % srcp(Koncovka, Znacka) :- na zaklade koncovky vratim spravnu znacku v poradi SlovnyDruh, Rod, Cislo, Pad.
+%%%% Podstatné mená %%%%
 % Koncovka = a
 srcp([a], [n,m,s,g]). % chlapA, dubA, strojA
 srcp([a], [n,m,s,a]). % chlapA
@@ -217,16 +218,37 @@ srcp([í,c,h], [a,s,p,l]). % cudzÍCH
 srcp([í,m,i], [a,m,p,i]). % cudzÍMI
 srcp([í,m,i], [a,z,p,i]). % cudzÍMI
 srcp([í,m,i], [a,s,p,i]). % cudzÍMI
-
-
-
+% Koncovka = []
+srcp([],[a,m,s,n]). % otcov
+srcp([],[a,m,s,a]). % otcov
+% Koncovka = a
+srcp([a], [a,z,s,n]). % otcovA
+% Koncovka = u
+srcp([u], [a,z,s,a]). % otcovU
+% Koncovka = o
+srcp([o], [a,s,s,n]). % otcovO
+srcp([o], [a,s,s,a]). % otcovO
+% Koncovka = i
+srcp([i], [a,m,p,n]). % otcovI
+% Koncovka = e
+srcp([e], [a,z,p,n]). % otcovE
+srcp([e], [a,s,p,n]). % otcovE
+srcp([e], [a,z,p,a]). % otcovE
+srcp([e], [a,s,p,a]). % otcovE
+% Koncovka = mu
+srcp([m,u], [a,m,s,d]). % otcovMU
+srcp([m,u], [a,s,s,d]). % otcovMU
+% Koncovka = ho
+srcp([h,o], [a,m,s,g]). % otcovHO
+srcp([h,o], [a,m,s,a]). % otcovHO
+srcp([h,o], [a,s,s,g]). % otcovHO
 
 
 
 
 % koncovka(+Kmen, +Slovo, -Koncovka) :- ak odoberiem zo začiatku Slova Kmen, dostanem Koncovku.
 koncovka([], Koncovka, Koncovka).
-koncovka([X|_], [Y|_], [x]) :- !.
+koncovka([X|_], [Y|_], [x]) :- X \= Y, !.
 koncovka([X|Xs], [X|Ys], Koncovka) :-  koncovka(Xs ,Ys, Koncovka).
 
 % negace(+Kmen, +Slovo, -NoveSlovo, -Negace) :- ak zacina Slovo na "ne" a Kmen nie, nastaví Negace na 1 a ako NoveSlovo vrati Slovo bez "ne" na zaciatku, inak nastaví negace na 0 a NoveSlovo bude rovnaké ako Slovo.
