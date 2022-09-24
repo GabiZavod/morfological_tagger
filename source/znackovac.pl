@@ -248,14 +248,32 @@ srcp([h,o], [a,s,s,g]). % otcovHO
 
 % koncovka(+Kmen, +Slovo, -Koncovka) :- ak odoberiem zo začiatku Slova Kmen, dostanem Koncovku.
 koncovka([], Koncovka, Koncovka).
-koncovka([X|_], [Y|_], [x]) :- X \= Y, !.
+koncovka([X|_], [Y|_], [x]) :- X \= Y.
 koncovka([X|Xs], [X|Ys], Koncovka) :-  koncovka(Xs ,Ys, Koncovka).
 
 % negace(+Kmen, +Slovo, -NoveSlovo, -Negace) :- ak zacina Slovo na "ne" a Kmen nie, nastaví Negace na 1 a ako NoveSlovo vrati Slovo bez "ne" na zaciatku, inak nastaví negace na 0 a NoveSlovo bude rovnaké ako Slovo.
-negace([X,Y|_], [N,E|SlovoRest], SlovoRest, 1) :- N = 'n', E = 'e', !.
+negace([X,Y|_], [n,a,j,N,E|SlovoRest], [n,a,j|SlovoRest], 1) :- X \= N, Y \= E, N = 'n', E = 'e', !.
+negace([X,Y|_], [N,E|SlovoRest], SlovoRest, 1) :- X \= N, Y \= E, N = 'n', E = 'e', !.
 negace(_, Slovo, Slovo, 0).
 
-% znacka(+Kmen, +Slovo, -Znacka)
-znacka(Kmen, Slovo, [Negace|Zvysok]) :- string_chars(Kmen, K), string_chars(Slovo,S),
-					negace(K, S, NoveS, Negace), koncovka(K, NoveS, Koncovka), 
+% ejs(+Kmen, +Slovo) :- po Kmeni nasleduje v Slove "ejš" alebo "š".
+ejs([], [š|_]).
+ejs([], [AaleboE,j,š|_]) :- AaleboE = a; AaleboE = e, !.
+ejs([K|RestKmen], [S|RestSlovo]) :- K = S, ejs(RestKmen, RestSlovo).
+
+% odoberEJS(+Kmen, +Slovo, -NoveSlovo) :- odoberie "ejš" zpoza kmeňa (aby som vedela správne určiť koncovku).
+odoberEJS([], [š|Rest], Rest).
+odoberEJS([], [AaleboE,j,š|Rest], Rest) :- AaleboE = a; AaleboE = e, !.
+odoberEJS([X|KmenRest], [Y|SlovoRest], [Y|Koncovka]) :- X = Y, odoberEJS(KmenRest, SlovoRest, Koncovka).
+
+% stupen(+Kmen, +Slovo, -Stupen, -NoveSlovo).
+stupen(Kmen, [N,A,J|SlovoRest], 3, NoveSlovo) :- N = 'n', A = 'a', J = 'j', ejs(Kmen, SlovoRest),
+						 odoberEJS(Kmen, SlovoRest, NoveSlovo), !.
+stupen(Kmen, Slovo, 2, NoveSlovo) :- ejs(Kmen, Slovo), odoberEJS(Kmen, Slovo, NoveSlovo), !.
+stupen(_,Slovo,1,Slovo).
+
+% znacka(+Kmen, +Slovo, -Znacka) :- vráti značku slova.
+znacka(Kmen, Slovo, [Negace, Stupen|Zvysok]) :- string_chars(Kmen, K), string_chars(Slovo,S),
+					negace(K, S, NoveS, Negace), stupen(K, NoveS, Stupen, NovsieS),
+					koncovka(K, NovsieS, Koncovka), 
 					srcp(Koncovka, Zvysok).

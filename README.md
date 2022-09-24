@@ -5,22 +5,25 @@ Zápočtový program na Neprocedurální programování v LS 2022 - Zjednodušen
 
 Budem pracovať so zjednodušenými 10-pozičnými značkami, ktoré charakterizujú len menné triedy:
 1. Negácia
-2. Slovný druh
-3. Rod
-4. Číslo
-5. Pád
-6. Stupeň
+2. Stupeň
+3. Slovný druh
+4. Rod
+5. Číslo
+6. Pád
 
 ## Slovný druh
 
-Program bude rozlišovať nasledujúce dvojice slovný druh-značka:
+Program rozpoznáva nasledujúce dvojice slovný druh-značka:
 
-Podstatné meno (n)
-Prídavné meno (aS)
-Zámená (z)
-Číslovky (c)
+- Podstatné meno (n)
+- Prídavné meno (a)
 
-### Podstatné mená (N)
+Pôvodne boli v pláne aj nasledujúce, no vzhľadom na to že by to bol len ďalší zdĺhavý výčet pravidiel, som sa rozhodla ich vynechať (plus často sa napríklad číslovky skloňujú podľa vzorov pre prídavné mená (redové č.))
+
+- Zámená (z)
+- Číslovky (c)
+
+### Podstatné mená (n)
 
 Vzory:
 - mužský rod (m)
@@ -39,7 +42,7 @@ Vzory:
     - dlaň
     - kosť
 
-### Prídavné mená (P)
+### Prídavné mená (a)
 
 Vzory:
 - pre akostné a vzťahové:
@@ -51,7 +54,7 @@ Vzory:
 - živočíšne:
     - páví
 
-### Zámená (Z)
+#### Zámená (Z)
 
 Rodové - nemajú vzor, budem to musieť hard-codenúť:
 - ženské (Z): moja, ona, jej
@@ -65,7 +68,7 @@ TODO: premyslieť, či chcem vôbec rozlišovať zámená
 - cudzí
 - môj
 
-### Číslovky (C)
+#### Číslovky (C)
 Vzory:
 - radové číslovky sa skloňujú podľa príd. mien:
     - pekný
@@ -84,7 +87,7 @@ Budem vedieť pracova len so základnými a radovými číslovkami, ostatné nej
 
 ## Rod, číslo a pád
 
-Budem ich určovať na základe vzoru, resp. zhody so vzorom
+Budem ich určovať na základe vzoru, resp. zhody so vzorom (koncovkou)
 
 ### Rod
 
@@ -111,21 +114,26 @@ Budem ich určovať na základe vzoru, resp. zhody so vzorom
 - druhý (2)
 - tretí (3)
 
-Určovaný len pri prídavných menách, tj. pri vzoroch pekný a cudzí
--> pozor na to, že ostatné veci, ktoré skloňujem podľa vzoru pekný, cudzí, neviem stupňovať
--> ak je druhý/tretí stupeň, viem jednoznačne, že ide o prídavné meno
+Stupeň určujem automaticky podľa koncovky, resp. predpony naj-, nehľadím na to, či ide o prídavné meno, preto podstatné mená majú stupeň 1.
+
+Dalo by sa to vylepšiť tak, že keď zistím, že ide o 2. či 3. stupeň, vyhodím možnosti značiek odpovedajúce podstatným menám.
 
 ## Negácia
 
 - nenegované (0)
 - negované (1)
 
-Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-", aplikujem len pri prídavných menách
+Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-".
 
 
 # Práca s nástrojom
 
 Nechcem používať slovník lemmat ani kmeňov, preto bude potrebné, aby sa pri zadaní requestu zadalo aj lemma resp. kmeň, inak nebudem vedieť určiť napríklad nominatív, rep. to, kde začína koncovka.
-- bude lepšie zadávať kmeň
-- možno nebude fungovať pre slová s rôznym kmeňom
 
+```prolog
+?- znacka(Kmen, Slovo, Znacka).
+```
+
+# Testovanie
+
+Testovacie dáta sú v súbore `test/testy.txt`
