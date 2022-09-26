@@ -322,11 +322,11 @@ odoberEJS([], [š|Rest], Rest) :- !.
 odoberEJS([], [e,j,š|Rest], Rest) :- !.
 odoberEJS([X|KmenRest], [Y|SlovoRest], [Y|Koncovka]) :- X = Y, odoberEJS(KmenRest, SlovoRest, Koncovka).
 
-% stupen(+Kmen, +Slovo, -Stupen, -NoveSlovo).
-stupen(Kmen, [n,a,j|SlovoRest], 3, NoveSlovo) :- ejs(Kmen, SlovoRest),
+% stupen(+Kmen, +Slovo, -Stupen, -NoveSlovo, -SlovDruh) :- ak ide o 2. alebo 3. stupeň, vynúti adjective.
+stupen(Kmen, [n,a,j|SlovoRest], 3, NoveSlovo, a) :- ejs(Kmen, SlovoRest),
 						 odoberEJS(Kmen, SlovoRest, NoveSlovo), !.
-stupen(Kmen, Slovo, 2, NoveSlovo) :- ejs(Kmen, Slovo), odoberEJS(Kmen, Slovo, NoveSlovo), !.
-stupen(_,Slovo,1,Slovo).
+stupen(Kmen, Slovo, 2, NoveSlovo, a) :- ejs(Kmen, Slovo), odoberEJS(Kmen, Slovo, NoveSlovo), !.
+stupen(_,Slovo,1,Slovo,_).
 
 % koncovka(+Kmen, +Slovo, -Koncovka) :- ak odoberiem zo začiatku Slova Kmen, dostanem Koncovku.
 koncovka([], Koncovka, Koncovka).
@@ -334,7 +334,7 @@ koncovka([X|_], [Y|_], [x]) :- X \= Y.
 koncovka([X|Xs], [X|Ys], Koncovka) :-  koncovka(Xs ,Ys, Koncovka).
 
 % znacka(+Kmen, +Slovo, -Znacka) :- vráti značku slova.
-znacka(Kmen, Slovo, [Negace, Stupen|Zvysok]) :- string_chars(Kmen, K), string_chars(Slovo,S),
-					negace(K, S, NoveS, Negace), stupen(K, NoveS, Stupen, NovsieS),
+znacka(Kmen, Slovo, [Negace, Stupen, SlovDruh, Rod, Cislo, Pad]) :- string_chars(Kmen, K), string_chars(Slovo,S),
+					negace(K, S, NoveS, Negace), stupen(K, NoveS, Stupen, NovsieS, SlovDruh),
 					koncovka(K, NovsieS, Koncovka), 
-					srcp(Koncovka, Zvysok).
+					srcp(Koncovka, [SlovDruh,Rod,Cislo,Pad]).

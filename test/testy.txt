@@ -25,4 +25,5 @@ znacka(poznan, poznania, Z).
     poznania - neneg, 1.st., podst.m., s, sg, genitív /pl.nominatív/akuzatív 
 znacka(nemeck, nenemeckému, Z).
     nenemeckému - neg, 1.st., adj., m/s, sg., datív
-
+znacka(mimoriadn, najmimoriadnejšia, Z).
+    najmimoriadnejšia - neneg, 3. st. adj., z, sg, nominatív 
