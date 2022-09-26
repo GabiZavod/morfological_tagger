@@ -1,0 +1,28 @@
+znacka(predan, predaných, Z).
+    predaných - nenegovaný, 1.stup., adj.,  m/z/s rod, plurál, genitív/akuzatív (m.r.životné)/lokál
+    Prečo vypisuje na konci false?
+znacka(históri, históriu, Z).
+    históriu - neneg., 1.stup.,podst.m., z, sg., akuzatív
+    - koncovka u: m.r., sg., genitív/datív/akuzatív
+		  s.r., sg., datív
+znacka(otc,otca,Z).
+    otca - neneg, 1.st., podst.m., m, sg., genitív/akuzatív
+znacka(neandertálsk, neandertálskeho, Z).
+    neandertálskeho - neneg, 1.st., adj, m/s, sg., genitív/akuzatív
+	-> hahaa, zabudla som, že existuje rytmické krátenie -> už good
+    prečo vypisuje na konci false?
+znacka(čiark, čiarok, Z).
+    čiarok - neneg, 1.st., podst.m., z, pl., genitív
+    - zmena kmeňa, also uložená pre stredný rod, plurál, genitív 
+    prečo vypisuje na konci false?
+znacka(robotníčk, robotníčkam, Z).
+    robotníčkam - neneg, 1st., post.m., z, pl., datív
+    prečo vypisuje na konci false?
+znacka(súc, nesúcich, Z).
+    nesúcich - neg, 1.st., adj., m/z/s, pl., genitív/akuzatív (m.r.živ.)/lokál
+    prečo vypisuje na konci false?
+znacka(poznan, poznania, Z).
+    poznania - neneg, 1.st., podst.m., s, sg, genitív /pl.nominatív/akuzatív 
+znacka(nemeck, nenemeckému, Z).
+    nenemeckému - neg, 1.st., adj., m/s, sg., datív
+
