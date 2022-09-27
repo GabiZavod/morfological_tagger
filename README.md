@@ -11,6 +11,23 @@ Budem pracovať so zjednodušenými 10-pozičnými značkami, ktoré charakteriz
 5. Číslo
 6. Pád
 
+## Negácia
+
+- nenegované (0)
+- negované (1)
+
+Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-".
+
+## Stupeň
+
+- prvý (1)
+- druhý (2)
+- tretí (3)
+
+Stupeň určujem automaticky podľa koncovky, resp. predpony naj-, nehľadím na to, či ide o prídavné meno, preto podstatné mená majú stupeň 1.
+
+Keď zistím, že ide o 2. či 3. stupeň, vyhodím možnosti značiek odpovedajúce podstatným menám.
+
 ## Slovný druh
 
 Program rozpoznáva nasledujúce dvojice slovný druh-značka:
@@ -54,7 +71,7 @@ Vzory:
 - živočíšne:
     - páví
 
-#### Zámená (Z)
+#### Zámená (Z) - vynechané
 
 Rodové - nemajú vzor, budem to musieť hard-codenúť:
 - ženské (Z): moja, ona, jej
@@ -68,8 +85,8 @@ TODO: premyslieť, či chcem vôbec rozlišovať zámená
 - cudzí
 - môj
 
-#### Číslovky (C)
-Vzory:
+#### Číslovky (C) - vynechané
+Vzory: 
 - radové číslovky sa skloňujú podľa príd. mien:
     - pekný
     - cudzí
@@ -108,24 +125,6 @@ Budem ich určovať na základe vzoru, resp. zhody so vzorom (koncovkou)
 - lokál (l)
 - inštromentál (i)
 
-## Stupeň
-
-- prvý (1)
-- druhý (2)
-- tretí (3)
-
-Stupeň určujem automaticky podľa koncovky, resp. predpony naj-, nehľadím na to, či ide o prídavné meno, preto podstatné mená majú stupeň 1.
-
-Dalo by sa to vylepšiť tak, že keď zistím, že ide o 2. či 3. stupeň, vyhodím možnosti značiek odpovedajúce podstatným menám.
-
-## Negácia
-
-- nenegované (0)
-- negované (1)
-
-Rozlíšim tak, že na začiatku slova (resp. po "naj-") bude predpona "ne-".
-
-
 # Práca s nástrojom
 
 Nechcem používať slovník lemmat ani kmeňov, preto bude potrebné, aby sa pri zadaní requestu zadalo aj lemma resp. kmeň, inak nebudem vedieť určiť napríklad nominatív, rep. to, kde začína koncovka.
@@ -133,6 +132,8 @@ Nechcem používať slovník lemmat ani kmeňov, preto bude potrebné, aby sa pr
 ```prolog
 ?- znacka(Kmen, Slovo, Znacka).
 ```
+
+Nástroj potom vráti všetky možnosti značiek, ktoré sú vhodné pre daný slovný tvar, na základe koncoviek a predpôn.
 
 # Testovanie
 
